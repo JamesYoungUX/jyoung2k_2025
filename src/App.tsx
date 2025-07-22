@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import NavIndicator from "./components/NavIndicator";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,6 +9,9 @@ import {
   Outlet,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import CaseStudiesPage from "./pages/CaseStudies/CaseStudiesPage";
+import ResumePage from "./pages/ResumePage";
+import ProcessesPage from "./pages/ProcessesPage";
 import ScrollToTop from "./components/ScrollToTop";
 
 /**
@@ -20,67 +24,72 @@ function NavParallax() {
   const navRef = useRef<HTMLDivElement>(null);
   const [isPinned, setIsPinned] = useState(false);
 
-  // Determine if the route should have the parallax nav effect.
-  const isParallaxRoute =
-    location.pathname === "/parallax" || location.pathname === "/";
+  const isParallaxRoute = location.pathname === "/";
 
   useEffect(() => {
-    if (!isParallaxRoute) return;
+    if (!isParallaxRoute) {
+      setIsPinned(true);
+      return;
+    }
 
-    /**
-     * Handles scroll event and pins/unpins nav based on scroll position
-     */
     const handleScroll = () => {
       if (!navRef.current) return;
-      const heroHeight = window.innerHeight; // Height of hero section
+      const heroHeight = window.innerHeight;
       setIsPinned(window.scrollY >= heroHeight);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Check initial pin status on mount
+    handleScroll();
 
-    // Clean up event listener on unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isParallaxRoute]);
 
-  // The primary navigation links
-  const navContent = (
-    <div className="flex space-x-6 text-lg">
-      <Link
-        to="/"
-        className="font-heading font-medium tracking-tight text-black hover:text-opacity-80 transition-colors"
-      >
-        JYOUNG2K
-      </Link>
-      <Link
-        to="/parallax"
-        className="hover:underline text-black hover:text-opacity-80 transition-colors"
-      >
-        Parallax
-      </Link>
-    </div>
-  );
+  const navLinks = [
+    { to: "/case-studies", label: "Case Studies" },
+    { to: "/resume", label: "Resume" },
+    { to: "/processes", label: "Processes" },
+  ];
 
-  // CSS classes for nav positioning and effect
   const navClasses = isParallaxRoute
-    ? `w-full z-50 ${isPinned ? "fixed top-0 left-0" : "absolute left-0 bottom-0"} ${
-        location.pathname === "/" ? "border-b-2 border-black" : ""
-      }`
-    : "w-full";
+    ? `w-full z-50 ${isPinned ? "fixed top-0 left-0 bg-cyan-300" : "absolute left-0 bottom-0 bg-cyan-300"}`
+    : "w-full z-50 fixed top-0 left-0 bg-cyan-300";
 
   return (
-    <div
+    <nav
       ref={navRef}
       className={navClasses}
-      style={{
-        background: "rgb(58, 255, 253)", // Vibrant background color
-        transition: "all 0.2s cubic-bezier(0.4,0,0.2,1)", // Smooth transition for pin/unpin
-      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        {navContent}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center relative h-16">
+        <div className="flex items-center h-full">
+          <Link
+            to="/"
+            className={`font-heading font-medium tracking-tight text-black hover:text-opacity-80 transition-colors text-base md:text-lg flex items-center h-full px-2`}
+            style={{position: 'relative', display: 'flex', alignItems: 'center', height: '100%'}}>
+            JYOUNG2K
+          </Link>
+        </div>
+        <div className="flex items-center space-x-8 h-full">
+          {navLinks.map(link => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`hover:text-opacity-80 transition-colors text-black text-base md:text-lg flex items-center h-full px-2`}
+              style={{position: 'relative', display: 'flex', alignItems: 'center', height: '100%'}}>
+              {link.label}
+            </Link>
+          ))}
+          <a
+            href="https://www.linkedin.com/in/jyoung2k/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-opacity-80 transition-colors text-black flex items-center text-base md:text-lg h-full px-2">
+            LinkedIn <span className="ml-2">→</span>
+          </a>
+        </div>
+        {/* Active page underline indicator at bottom */}
+        <NavIndicator location={location} navLinks={[{ to: "/", label: "JYOUNG2K" }, ...navLinks]} />
       </div>
-    </div>
+    </nav>
   );
 }
 
@@ -117,6 +126,9 @@ function App() {
         <Route element={<Layout />}>
           {/* Index route ("/") renders the HomePage */}
           <Route index element={<HomePage />} />
+          <Route path="case-studies" element={<CaseStudiesPage />} />
+          <Route path="resume" element={<ResumePage />} />
+          <Route path="processes" element={<ProcessesPage />} />
         </Route>
       </Routes>
     </Router>
