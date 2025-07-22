@@ -7,25 +7,25 @@ const HomePage: React.FC = () => {
       {/* Hero Section */}
       <div className="relative h-screen flex items-center justify-center z-0 bg-[#23263a]">
         {/* Main Content */}
-        <div className="relative z-10 px-4 w-full max-w-5xl">
-          <div className="text-left">
-            <h1 className="font-heading text-white text-8xl md:text-9xl lg:text-[180px] xl:text-[200px] mb-2 leading-[0.9]">
+        <div className="relative z-10 px-6 sm:px-8 lg:px-12 w-full max-w-5xl">
+          <div className="text-center sm:text-left">
+            <h1 className="font-heading text-white text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[160px] 2xl:text-[200px] mb-4 sm:mb-6 leading-[0.85] sm:leading-[0.9]">
               JYOUNG2K
             </h1>
             <p
-              className="text-lg sm:text-xl md:text-3xl text-left mt-2 w-full"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-center sm:text-justify mt-4 sm:mt-6 w-full max-w-4xl mx-auto sm:mx-0"
               style={{
                 color: 'rgb(58, 255, 253)'
               }}
             >
-              Two decades of expertise in crafting innovative solutions for healthcare, e-commerce, and startups.
+              With two decades of hands-on expertise, I craft innovative solutions for healthcare, e-commerce, government, and startups. My work empowers organizations to tackle complex challenges and deliver standout digital experiences that make a real impact.
             </p>
           </div>
         </div>
       </div>
 
       {/* Content Sections */}
-      <div className="relative z-10 -mt-32" style={{ background: '#23263a' }}>
+      <div className="relative z-10 -mt-16 sm:-mt-32" style={{ background: '#23263a' }}>
         {/* Section 1: UX Design */}
         <div className="min-h-screen flex items-center justify-center relative py-12 sm:py-16 md:py-24">
           <div className="absolute inset-0 bg-[#23263a]" />
@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
               {/* Left: Large vertical heading */}
               <div className="flex flex-col items-start md:max-w-xs pl-0">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-lime-300 leading-tight text-left">
-                  User<br/>Experience<br/>(UX) Design
+                  Methods
                 </h2>
               </div>
               {/* Center: Main content */}
@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
                   Cross-section methodology
                 </h2>
                 <p className="text-base md:text-lg text-white mb-8">
-                  Our approach to UX design involves the innovative cross-section methodology. We take into consideration your business model and enhance the design through supportive design elements, ensuring a seamless and intuitive user experience. By integrating your strategic objectives with our design expertise, we create user-centric solutions that drive engagement and propel your business forward.
+                  My approach to UX design blends a strategic understanding of your business model with innovative, user-focused design. By integrating business objectives with thoughtful design elements, I create seamless and intuitive experiences that not only engage users but also drive measurable results and move your business forward.
                 </p>
                 <h3 className="text-xl font-bold text-lime-300 mb-2">
                   Embracing the iterative LEAN approach
@@ -126,12 +126,12 @@ const HomePage: React.FC = () => {
         </div>
       </div>
       {/* Services Section */}
-      <section className="w-full bg-[#23263a] py-8 px-4 mt-0">
+      <section className="w-full bg-[#23263a] py-8 px-4 -mt-8">
         <div className="max-w-7xl px-0 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             {/* Left: Services heading */}
             <div className="flex flex-col items-start md:items-start md:justify-start pl-0">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 text-left">Specializations</h2>
+              <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 text-left">Specializations</h2>
             </div>
             {/* Right: Services content */}
             <div className="md:col-span-2 flex flex-col">
@@ -153,6 +153,81 @@ const HomePage: React.FC = () => {
                 <div>
                   <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">Prototyping & Usability Testing</h4>
                   <p className="text-[18px] text-white">I use an iterative approach to rapidly prototype and test designs, allowing me to identify and resolve potential issues early in the process. This ensures a seamless transition from concept to development and results in solutions that are both effective and user-centered.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Visual Accent Above Mission */}
+      <div className="w-full bg-[#23263a] py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="h-px bg-gradient-to-r from-transparent via-lime-300 to-transparent opacity-60"></div>
+        </div>
+      </div>
+
+      {/* Mission Section */}
+      <section className="w-full bg-[#23263a] py-20 px-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          {/* Left: Mission heading */}
+          <div className="flex flex-col items-start">
+            <h2 className="text-5xl md:text-6xl font-bold text-lime-300 text-left">Mission</h2>
+          </div>
+          {/* Center: Empowering statement and icon */}
+          <div className="flex flex-col items-start relative">
+            <div className="font-bold text-2xl md:text-3xl lg:text-4xl text-lime-300 text-left mb-4">
+              Driving innovation<br />through meaningful design
+            </div>
+            <div className="relative flex items-center justify-center mt-2">
+              <div className="absolute w-32 h-32 rounded-full bg-lime-300 opacity-20 blur-3xl z-0"></div>
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10">
+                <path d="M24 6C16.268 6 10 12.268 10 20c0 5.522 3.438 10.197 8.25 12.02V36a2 2 0 002 2h7.5a2 2 0 002-2v-3.98C34.562 30.197 38 25.522 38 20c0-7.732-6.268-14-14-14zm3.5 30h-7v-2h7v2zm-3.5-4c-6.075 0-11-4.925-11-11s4.925-11 11-11 11 4.925 11 11-4.925 11-11 11z" fill="#D9FF50"/>
+                <rect x="20" y="40" width="8" height="4" rx="2" fill="#D9FF50"/>
+              </svg>
+            </div>
+          </div>
+          {/* Right: Mission body copy */}
+          <div className="text-white text-lg md:text-xl text-left">
+            My mission is to empower startups and growing businesses in healthcare with world-class UX design. I believe intuitive, accessible digital experiences can transform complex products, improve patient outcomes, and build lasting trust. By partnering closely with clients, I help turn bold healthcare ideas into impactful solutions that make a real difference.
+          </div>
+        </div>
+      </section>
+
+      {/* Visual Accent Below Mission */}
+      <div className="w-full bg-[#23263a] py-8">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="h-px bg-gradient-to-r from-transparent via-lime-300 to-transparent opacity-60"></div>
+        </div>
+      </div>
+
+      {/* Experience Section (duplicate of Specializations) */}
+      <section className="w-full bg-[#23263a] py-8 px-4 mt-16">
+        <div className="max-w-7xl px-0 mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            {/* Left: Experience heading */}
+            <div className="flex flex-col items-start md:items-start md:justify-start pl-0">
+              <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 text-left">Experience</h2>
+            </div>
+            {/* Right: Experience content (same as Specializations for now) */}
+            <div className="md:col-span-2 flex flex-col">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Practical design mastery</h3>
+              <p className="text-base md:text-lg text-white mb-10 max-w-2xl">With extensive experience in design for Healthcare, Insurance, and a variety of technology-driven industries, I understand the unique challenges and needs of each sector. By deeply immersing myself in these fields, I create user experiences that address real pain points, connect with target audiences, and deliver impactful results that support business growth.</p>
+              <div className="grid gap-8 md:grid-cols-2">
+                <div>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">Idea to Impact</h4>
+                  <p className="text-[18px] text-white">I turn early-stage concepts into impactful digital products by guiding them from research and ideation through to polished, user-centered design. My collaborative approach ensures solutions are intuitive, scalable, and aligned with real user needs.</p>
+                </div>
+                <div>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">Healthcare/Clinical UX</h4>
+                  <p className="text-[18px] text-white">With a deep understanding of healthcare's unique needs, I design digital solutions that prioritize safety, privacy, and effective communication. My work ranges from patient-facing experiences to optimizing back-office systems for large healthcare organizations and government agencies.</p>
+                </div>
+                <div>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">Insurance/Fintech</h4>
+                  <p className="text-[18px] text-white">With extensive experience in both insurance and fintech, I design digital solutions that simplify complex processes and inspire user trust. Whether it's streamlining claims, managing policies, or building intuitive financial platforms, my work makes critical information clear and actionable while ensuring secure, seamless experiences for both customers and organizations.</p>
+                </div>
+                <div>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">E-commerce</h4>
+                  <p className="text-[18px] text-white">With experience working alongside some of the largest e-commerce brands, I design solutions that streamline shopping, simplify checkout, and enhance product discovery—boosting both customer satisfaction and sales.</p>
                 </div>
               </div>
             </div>

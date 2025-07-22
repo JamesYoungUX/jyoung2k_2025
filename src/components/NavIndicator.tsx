@@ -1,38 +1,41 @@
 import React, { useEffect, useRef, useState } from "react";
+import type { Location } from "react-router-dom";
 
 interface NavIndicatorProps {
-  location: any;
-  navLinks: { to: string; label: string }[];
+  location: Location;
 }
 
-const NavIndicator: React.FC<NavIndicatorProps> = ({ location, navLinks }) => {
+const NavIndicator: React.FC<NavIndicatorProps> = ({ location }) => {
   const indicatorRef = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState({ left: 0, width: 0, opacity: 0 });
 
   useEffect(() => {
-    // Find all nav link elements
     const navBar = indicatorRef.current?.parentElement;
     if (!navBar) return;
-    // Get all anchor tags in the nav bar
+    
     const anchors = navBar.querySelectorAll("a[href]");
-    let activeAnchor: HTMLAnchorElement | null = null;
+    let activeAnchor: Element | null = null;
+    
     anchors.forEach(anchor => {
       if (anchor.getAttribute("href") === location.pathname) {
-        activeAnchor = anchor as HTMLAnchorElement;
+        activeAnchor = anchor;
       }
     });
-    // Special case for home link
+    
     if (!activeAnchor && location.pathname === "/") {
       anchors.forEach(anchor => {
         if (anchor.getAttribute("href") === "/") {
-          activeAnchor = anchor as HTMLAnchorElement;
+          activeAnchor = anchor;
         }
       });
     }
+    
     if (activeAnchor) {
+      const rect = (activeAnchor as any).getBoundingClientRect();
+      const navRect = navBar.getBoundingClientRect();
       setStyle({
-        left: activeAnchor.offsetLeft,
-        width: activeAnchor.offsetWidth,
+        left: rect.left - navRect.left,
+        width: rect.width,
         opacity: 1,
       });
     } else {

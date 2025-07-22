@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import NavIndicator from "./components/NavIndicator";
+import HamburgerMenu from "./components/HamburgerMenu";
 import {
   BrowserRouter as Router,
   Routes,
@@ -59,36 +60,44 @@ function NavParallax() {
       ref={navRef}
       className={navClasses}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center relative h-16">
-        <div className="flex items-center h-full">
-          <Link
-            to="/"
-            className={`font-heading font-medium tracking-tight text-black hover:text-opacity-80 transition-colors text-base md:text-lg flex items-center h-full px-2`}
-            style={{position: 'relative', display: 'flex', alignItems: 'center', height: '100%'}}>
-            JYOUNG2K
-          </Link>
-        </div>
-        <div className="flex items-center space-x-8 h-full">
-          {navLinks.map(link => (
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center relative h-16">
+          <div className="flex items-center h-full">
             <Link
-              key={link.to}
-              to={link.to}
-              className={`hover:text-opacity-80 transition-colors text-black text-base md:text-lg flex items-center h-full px-2`}
+              to="/"
+              className={`font-heading font-medium tracking-tight text-black hover:text-opacity-80 transition-colors text-base md:text-lg flex items-center h-full px-2`}
               style={{position: 'relative', display: 'flex', alignItems: 'center', height: '100%'}}>
-              {link.label}
+              JYOUNG2K
             </Link>
-          ))}
-          <a
-            href="https://www.linkedin.com/in/jyoung2k/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-opacity-80 transition-colors text-black flex items-center text-base md:text-lg h-full px-2">
-            LinkedIn <span className="ml-2">→</span>
-          </a>
+          </div>
+          
+          {/* Desktop Navigation - Hidden on mobile */}
+          <div className="hidden md:flex items-center space-x-8 h-full">
+            {navLinks.map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`hover:text-opacity-80 transition-colors text-black text-base md:text-lg flex items-center h-full px-2`}
+                style={{position: 'relative', display: 'flex', alignItems: 'center', height: '100%'}}>
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href="https://www.linkedin.com/in/jyoung2k/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-opacity-80 transition-colors text-black flex items-center text-base md:text-lg h-full px-2">
+              LinkedIn <span className="ml-2">→</span>
+            </a>
+          </div>
+
+          {/* Mobile Hamburger Menu */}
+          <HamburgerMenu navLinks={navLinks} />
+          
+          {/* Active page underline indicator at bottom - Hidden on mobile */}
+          <div className="hidden md:block">
+            <NavIndicator location={location} />
+          </div>
         </div>
-        {/* Active page underline indicator at bottom */}
-        <NavIndicator location={location} navLinks={[{ to: "/", label: "JYOUNG2K" }, ...navLinks]} />
-      </div>
     </nav>
   );
 }
