@@ -47,7 +47,7 @@ function NavParallax() {
   const navLinks = [
     { to: "/case-studies", label: "Case Studies" },
     { to: "/resume", label: "Resume" },
-    { to: "/processes", label: "Processes" },
+    { to: "/processes", label: "Process" },
   ];
 
   const navClasses = isParallaxRoute
@@ -98,7 +98,7 @@ function NavParallax() {
  * Contains background color, navigation, and page routing outlet.
  */
 const Layout = () => (
-  <div className="min-h-screen bg-gray-50">
+  <div className="min-h-screen bg-[#23263a] text-white">
     <NavParallax />
     <main>
       <Outlet />

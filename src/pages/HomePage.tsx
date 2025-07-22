@@ -32,8 +32,8 @@ const HomePage: React.FC = () => {
           <div className="relative z-10 w-full max-w-7xl px-0 mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start content-start">
               {/* Left: Large vertical heading */}
-              <div className="flex flex-col items-start md:max-w-xs">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-lime-300 leading-tight">
+              <div className="flex flex-col items-start md:max-w-xs pl-0">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-lime-300 leading-tight text-left">
                   User<br/>Experience<br/>(UX) Design
                 </h2>
               </div>
@@ -127,11 +127,11 @@ const HomePage: React.FC = () => {
       </div>
       {/* Services Section */}
       <section className="w-full bg-[#23263a] py-8 px-4 mt-0">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl px-0 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             {/* Left: Services heading */}
-            <div className="flex flex-col items-start md:items-start md:justify-start">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Specializations</h2>
+            <div className="flex flex-col items-start md:items-start md:justify-start pl-0">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 text-left">Specializations</h2>
             </div>
             {/* Right: Services content */}
             <div className="md:col-span-2 flex flex-col">
@@ -139,20 +139,20 @@ const HomePage: React.FC = () => {
               <p className="text-base md:text-lg text-white mb-10 max-w-2xl">I am committed to crafting seamless user experiences tailored to address unique business needs. My expertise spans a diverse range of specializations:</p>
               <div className="grid gap-8 md:grid-cols-2">
                 <div>
-                  <h4 className="text-lime-300 text-xl font-bold mb-2">User Experience (UX) Design</h4>
-                  <p className="text-base text-[rgb(165,169,179)]">I transform complex processes into intuitive, user-friendly experiences that engage and delight users. Through thoughtful research and design, I make each interaction clear, seamless, and rewarding.</p>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">User Experience (UX) Design</h4>
+                  <p className="text-[18px] text-white">I transform complex processes into intuitive, user-friendly experiences that engage and delight users. Through thoughtful research and design, I make each interaction clear, seamless, and rewarding.</p>
                 </div>
                 <div>
-                  <h4 className="text-lime-300 text-xl font-bold mb-2">User Interface (UI) Design</h4>
-                  <p className="text-base text-[rgb(165,169,179)]">I design visually appealing interfaces that capture your product’s needs and reinforce user engagement, making every interaction intuitive and enjoyable while supporting seamless task completion.</p>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">User Interface (UI) Design</h4>
+                  <p className="text-[18px] text-white">I design visually appealing interfaces that capture your product’s needs and reinforce user engagement, making every interaction intuitive and enjoyable while supporting seamless task completion.</p>
                 </div>
                 <div>
-                  <h4 className="text-lime-300 text-xl font-bold mb-2">UX Optimization</h4>
-                  <p className="text-base text-[rgb(165,169,179)]">I analyze and optimize existing digital products to improve usability, boost user engagement, and enhance overall satisfaction. By identifying friction points and implementing targeted design solutions, I ensure products are more intuitive, efficient, and enjoyable to use.</p>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">UX Optimization</h4>
+                  <p className="text-[18px] text-white">I analyze and optimize existing digital products to improve usability, boost user engagement, and enhance overall satisfaction. By identifying friction points and implementing targeted design solutions, I ensure products are more intuitive, efficient, and enjoyable to use.</p>
                 </div>
                 <div>
-                  <h4 className="text-lime-300 text-xl font-bold mb-2">Prototyping & Usability Testing</h4>
-                  <p className="text-base text-[rgb(165,169,179)]">I use an iterative approach to rapidly prototype and test designs, allowing me to identify and resolve potential issues early in the process. This ensures a seamless transition from concept to development and results in solutions that are both effective and user-centered.</p>
+                  <h4 className="text-white text-2xl md:text-3xl font-bold mb-4">Prototyping & Usability Testing</h4>
+                  <p className="text-[18px] text-white">I use an iterative approach to rapidly prototype and test designs, allowing me to identify and resolve potential issues early in the process. This ensures a seamless transition from concept to development and results in solutions that are both effective and user-centered.</p>
                 </div>
               </div>
             </div>
