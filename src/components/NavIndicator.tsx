@@ -53,18 +53,22 @@ const NavIndicator: React.FC<NavIndicatorProps> = ({ location }) => {
     }
     
     if (activeAnchor) {
-      const rect = (activeAnchor as any).getBoundingClientRect();
-      const navRect = navBar.getBoundingClientRect();
+      const rect = (activeAnchor as HTMLElement).getBoundingClientRect();
       
-      // Find the navbar's inner container to account for padding
-      const navContainer = navBar.querySelector('.max-w-7xl');
-      const containerRect = navContainer?.getBoundingClientRect() || navRect;
+      // Find the indicator's parent container (the one with absolute bottom-0 left-0 right-0)
+      const indicatorContainer = indicatorRef.current?.parentElement;
+      if (!indicatorContainer) {
+        console.log("NavIndicator: No parent container found");
+        return;
+      }
       
-      // Calculate position relative to the navbar's inner container
+      const containerRect = indicatorContainer.getBoundingClientRect();
+      
+      // Calculate position relative to the indicator's parent container
       const left = rect.left - containerRect.left;
       const width = rect.width;
       
-      console.log("Active anchor found:", (activeAnchor as any).textContent);
+      console.log("Active anchor found:", (activeAnchor as HTMLElement).textContent);
       console.log("Anchor rect:", rect);
       console.log("Container rect:", containerRect);
       console.log("Calculated left:", left);

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import NavIndicator from "./components/NavIndicator";
 import HamburgerMenu from "./components/HamburgerMenu";
+import Footer from "./components/Footer";
 import {
   BrowserRouter as Router,
   Routes,
@@ -114,6 +115,7 @@ const Layout = () => (
     <main>
       <Outlet />
     </main>
+    <Footer />
   </div>
 );
 
