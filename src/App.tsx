@@ -11,9 +11,11 @@ import {
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CaseStudiesPage from "./pages/CaseStudies/CaseStudiesPage";
+import CaseStudyDetailPage from "./pages/CaseStudyDetail/CaseStudyDetailPage";
 import ResumePage from "./pages/ResumePage";
 import ProcessesPage from "./pages/ProcessesPage";
 import ScrollToTop from "./components/ScrollToTop";
+import { CaseStudySeeder } from "./utils/caseStudySeeder";
 
 /**
  * Navigation bar that implements a parallax effect.
@@ -47,8 +49,8 @@ function NavParallax() {
 
   const navLinks = [
     { to: "/case-studies", label: "Case Studies" },
-    { to: "/resume", label: "Resume" },
     { to: "/processes", label: "Process" },
+    { to: "/resume", label: "Resume" },
   ];
 
   const navClasses = isParallaxRoute
@@ -94,7 +96,7 @@ function NavParallax() {
           <HamburgerMenu navLinks={navLinks} />
           
           {/* Active page underline indicator at bottom - Hidden on mobile */}
-          <div className="hidden md:block">
+          <div className="hidden md:block absolute bottom-0 left-0 right-0">
             <NavIndicator location={location} />
           </div>
         </div>
@@ -126,6 +128,33 @@ function App() {
     window.scrollTo(0, 0);
   }, []);
 
+  // Make CaseStudySeeder available globally for development
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      (window as any).seedCaseStudies = async () => {
+        try {
+          const ids = await CaseStudySeeder.seedAll();
+          console.log('Successfully seeded case studies:', ids);
+          return ids;
+        } catch (error) {
+          console.error('Failed to seed case studies:', error);
+          throw error;
+        }
+      };
+      
+      (window as any).seedBravadoHealth = async () => {
+        try {
+          const id = await CaseStudySeeder.seedBravadoHealth();
+          console.log('Successfully seeded Bravado Health case study:', id);
+          return id;
+        } catch (error) {
+          console.error('Failed to seed Bravado Health case study:', error);
+          throw error;
+        }
+      };
+    }
+  }, []);
+
   return (
     <Router>
       {/* Handles manual scroll restoration on route change */}
@@ -136,6 +165,7 @@ function App() {
           {/* Index route ("/") renders the HomePage */}
           <Route index element={<HomePage />} />
           <Route path="case-studies" element={<CaseStudiesPage />} />
+          <Route path="case-study/:id" element={<CaseStudyDetailPage />} />
           <Route path="resume" element={<ResumePage />} />
           <Route path="processes" element={<ProcessesPage />} />
         </Route>

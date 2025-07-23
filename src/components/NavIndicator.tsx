@@ -10,21 +10,43 @@ const NavIndicator: React.FC<NavIndicatorProps> = ({ location }) => {
   const [style, setStyle] = useState({ left: 0, width: 0, opacity: 0 });
 
   useEffect(() => {
-    const navBar = indicatorRef.current?.parentElement;
-    if (!navBar) return;
+    // Look for the entire navbar container, not just the parent
+    const navBar = indicatorRef.current?.closest('nav');
+    if (!navBar) {
+      console.log("NavIndicator: No nav element found");
+      return;
+    }
     
+    // Find the active link based on current location
+    let activeLink: string | null = null;
+    
+    if (location.pathname === "/") {
+      // For home page, look for the JYOUNG2K logo link
+      activeLink = "/";
+    } else if (location.pathname.startsWith("/case-studies")) {
+      activeLink = "/case-studies";
+    } else if (location.pathname.startsWith("/processes")) {
+      activeLink = "/processes";
+    } else if (location.pathname.startsWith("/resume")) {
+      activeLink = "/resume";
+    }
+    
+    // Find the corresponding anchor element
     const anchors = navBar.querySelectorAll("a[href]");
     let activeAnchor: Element | null = null;
     
     anchors.forEach(anchor => {
-      if (anchor.getAttribute("href") === location.pathname) {
+      const href = anchor.getAttribute("href");
+      if (href === activeLink) {
         activeAnchor = anchor;
       }
     });
     
+    // For home page, if we didn't find a link with href="/", look for the logo
     if (!activeAnchor && location.pathname === "/") {
       anchors.forEach(anchor => {
-        if (anchor.getAttribute("href") === "/") {
+        const href = anchor.getAttribute("href");
+        if (href === "/") {
           activeAnchor = anchor;
         }
       });
@@ -33,12 +55,30 @@ const NavIndicator: React.FC<NavIndicatorProps> = ({ location }) => {
     if (activeAnchor) {
       const rect = (activeAnchor as any).getBoundingClientRect();
       const navRect = navBar.getBoundingClientRect();
-      setStyle({
-        left: rect.left - navRect.left,
-        width: rect.width,
+      
+      // Find the navbar's inner container to account for padding
+      const navContainer = navBar.querySelector('.max-w-7xl');
+      const containerRect = navContainer?.getBoundingClientRect() || navRect;
+      
+      // Calculate position relative to the navbar's inner container
+      const left = rect.left - containerRect.left;
+      const width = rect.width;
+      
+      console.log("Active anchor found:", (activeAnchor as any).textContent);
+      console.log("Anchor rect:", rect);
+      console.log("Container rect:", containerRect);
+      console.log("Calculated left:", left);
+      console.log("Calculated width:", width);
+      
+      const newStyle = {
+        left: left,
+        width: width,
         opacity: 1,
-      });
+      };
+      console.log("NavIndicator: Setting style:", newStyle);
+      setStyle(newStyle);
     } else {
+      console.log("No active anchor found for pathname:", location.pathname);
       setStyle({ left: 0, width: 0, opacity: 0 });
     }
   }, [location.pathname]);
@@ -52,6 +92,7 @@ const NavIndicator: React.FC<NavIndicatorProps> = ({ location }) => {
         width: style.width,
         opacity: style.opacity,
         pointerEvents: "none",
+        zIndex: 10,
       }}
     />
   );

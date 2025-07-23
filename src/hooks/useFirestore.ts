@@ -95,8 +95,22 @@ export function useFirestoreCollection<T extends FirestoreDocument>(
         setLastDoc(lastVisible || null);
         setHasMore(newData.length === (options.limit || 25));
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
+        // Handle specific Firestore permission errors
+        if (err instanceof Error) {
+          if (err.message.includes('Missing or insufficient permissions')) {
+            setError('Permission denied: Unable to access database');
+            console.warn('Firestore permission error - this is expected if security rules are not configured');
+          } else if (err.message.includes('collection') && err.message.includes('not found')) {
+            setError('Collection not found');
+            console.warn('Firestore collection not found - this is expected if the collection does not exist');
+          } else {
+            setError(err.message);
         console.error("Error fetching Firestore data:", err);
+          }
+        } else {
+          setError("An unexpected error occurred");
+          console.error("Unknown error fetching Firestore data:", err);
+        }
       } finally {
         setLoading(false);
       }
@@ -125,9 +139,18 @@ export function useFirestoreCollection<T extends FirestoreDocument>(
         setHasMore(newData.length === (options.limit || 25));
       },
       (err) => {
+        // Handle specific Firestore permission errors in realtime listener
+        if (err.message.includes('Missing or insufficient permissions')) {
+          setError('Permission denied: Unable to access database');
+          console.warn('Firestore permission error in realtime listener - this is expected if security rules are not configured');
+        } else if (err.message.includes('collection') && err.message.includes('not found')) {
+          setError('Collection not found');
+          console.warn('Firestore collection not found in realtime listener - this is expected if the collection does not exist');
+        } else {
         setError(err.message);
+          console.error("Error in Firestore listener:", err);
+        }
         setLoading(false);
-        console.error("Error in Firestore listener:", err);
       },
     );
 
@@ -200,8 +223,22 @@ export function useFirestoreDocument<T extends FirestoreDocument>(
         setError("Document not found");
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      // Handle specific Firestore permission errors for documents
+      if (err instanceof Error) {
+        if (err.message.includes('Missing or insufficient permissions')) {
+          setError('Permission denied: Unable to access document');
+          console.warn('Firestore permission error for document - this is expected if security rules are not configured');
+        } else if (err.message.includes('document') && err.message.includes('not found')) {
+          setError('Document not found');
+          console.warn('Firestore document not found - this is expected if the document does not exist');
+        } else {
+          setError(err.message);
       console.error("Error fetching document:", err);
+        }
+      } else {
+        setError("An unexpected error occurred");
+        console.error("Unknown error fetching document:", err);
+      }
     } finally {
       setLoading(false);
     }
@@ -282,7 +319,7 @@ export function useFirestoreArrays<T>(
     loading,
     error,
     refresh,
-  } = useFirestoreDocument<any>(collectionName, documentId, true);
+  } = useFirestoreDocument<FirestoreDocument & Record<string, unknown>>(collectionName, documentId, true);
 
   const arrayData: T[] = document?.[arrayField] || [];
 

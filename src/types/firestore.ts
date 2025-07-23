@@ -7,6 +7,22 @@ export interface FirestoreDocument {
   [key: string]: any;
 }
 
+// Case Study type - simplified structure with image
+export interface CaseStudy extends FirestoreDocument {
+  company: string;
+  image?: string;
+  hidden?: boolean;
+  featured?: boolean;
+  details?: {
+    timeline?: string;
+    role?: string;
+    teamMembers?: string;
+    platform?: string;
+    methodologies?: string;
+  };
+  intro?: string;
+}
+
 // Base content type for root-level documents
 export interface ContentDocument extends FirestoreDocument {
   title?: string;
@@ -18,24 +34,24 @@ export interface ContentDocument extends FirestoreDocument {
   author?: string;
   slug?: string;
   featured?: boolean;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 // Type for array items within documents
 export interface ArrayItem {
   id?: string;
-  value: any;
+  value: unknown;
   order?: number;
   type?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 // Generic type for documents containing arrays
 export interface DocumentWithArrays extends FirestoreDocument {
   items?: ArrayItem[];
-  list?: any[];
-  data?: any[];
-  elements?: any[];
+  list?: unknown[];
+  data?: unknown[];
+  elements?: unknown[];
 }
 
 // Firestore query types
@@ -48,17 +64,17 @@ export interface FirestoreQueryOptions {
   where?: {
     field: string;
     operator: '==' | '!=' | '<' | '<=' | '>' | '>=' | 'array-contains' | 'in' | 'array-contains-any' | 'not-in';
-    value: any;
+    value: unknown;
   }[];
-  startAfter?: any;
-  endBefore?: any;
+  startAfter?: unknown;
+  endBefore?: unknown;
 }
 
 // API response types
 export interface FirestoreResponse<T> {
   data: T[];
   hasMore: boolean;
-  lastDoc?: any;
+  lastDoc?: unknown;
   error?: string;
 }
 

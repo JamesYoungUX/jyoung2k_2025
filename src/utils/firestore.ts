@@ -340,6 +340,8 @@ export class SearchUtils {
     }
   }
 
+
+
   // Filter by multiple conditions
   static async advancedFilter<T extends FirestoreDocument>(
     collectionName: string,
@@ -356,7 +358,7 @@ export class SearchUtils {
         | "in"
         | "array-contains-any"
         | "not-in";
-      value: any;
+      value: unknown;
     }>,
     options: Omit<FirestoreQueryOptions, "where"> = {},
   ): Promise<T[]> {
