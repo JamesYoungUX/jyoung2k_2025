@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
             </div>
             {/* Right: Services content */}
             <div className="md:col-span-2">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">From concept to reality</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">From Concept to Reality</h3>
               <p className="text-base md:text-lg text-white mb-10 max-w-2xl">I craft seamless user experiences that solve unique business challenges. My expertise spans a wide range of specialties, allowing me to deliver thoughtful, effective solutions at every stage of the design process:</p>
               <div className="grid gap-8 md:grid-cols-2">
                 <div>
@@ -125,7 +125,7 @@ const HomePage: React.FC = () => {
             </div>
             {/* Right: Experience content (same as Specializations for now) */}
             <div className="md:col-span-2 flex flex-col">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Practical design mastery</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Practical Design Mastery</h3>
               <p className="text-base md:text-lg text-white mb-10 max-w-2xl">With extensive experience in design for Healthcare, Insurance, and a variety of technology-driven industries, I understand the unique challenges and needs of each sector. By deeply immersing myself in these fields, I create user experiences that address real pain points, connect with target audiences, and deliver impactful results that support business growth.</p>
               <div className="grid gap-8 md:grid-cols-2">
                 <div>
