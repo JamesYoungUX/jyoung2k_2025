@@ -41,7 +41,7 @@ const Loading: React.FC<LoadingProps> = ({
 
   const renderPulse = () => (
     <div
-      className={`bg-gray-200 rounded ${sizeClasses[size]} animate-pulse ${className}`}
+      className={`bg-gray-200 rounded-sm ${sizeClasses[size]} animate-pulse ${className}`}
       role="status"
       aria-label="Loading"
     />
@@ -107,14 +107,14 @@ export const LoadingCard: React.FC<LoadingCardProps> = ({ className = "" }) => {
       <div className="flex items-center space-x-4">
         <div className="bg-gray-200 rounded-full h-12 w-12"></div>
         <div className="flex-1 space-y-2">
-          <div className="bg-gray-200 h-4 rounded w-3/4"></div>
-          <div className="bg-gray-200 h-4 rounded w-1/2"></div>
+          <div className="bg-gray-200 h-4 rounded-sm w-3/4"></div>
+          <div className="bg-gray-200 h-4 rounded-sm w-1/2"></div>
         </div>
       </div>
       <div className="mt-4 space-y-2">
-        <div className="bg-gray-200 h-4 rounded"></div>
-        <div className="bg-gray-200 h-4 rounded"></div>
-        <div className="bg-gray-200 h-4 rounded w-5/6"></div>
+        <div className="bg-gray-200 h-4 rounded-sm"></div>
+        <div className="bg-gray-200 h-4 rounded-sm"></div>
+        <div className="bg-gray-200 h-4 rounded-sm w-5/6"></div>
       </div>
     </div>
   );

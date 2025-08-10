@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
       {/* Visual Accent Above Mission */}
       <div className="w-full bg-[#23263a] py-8">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="h-px bg-gradient-to-r from-transparent via-lime-300 to-transparent opacity-60"></div>
+          <div className="h-px bg-linear-to-r from-transparent via-lime-300 to-transparent opacity-60"></div>
         </div>
       </div>
 
@@ -111,7 +111,7 @@ const HomePage: React.FC = () => {
       {/* Visual Accent Below Mission */}
       <div className="w-full bg-[#23263a] py-8">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="h-px bg-gradient-to-r from-transparent via-lime-300 to-transparent opacity-60"></div>
+          <div className="h-px bg-linear-to-r from-transparent via-lime-300 to-transparent opacity-60"></div>
         </div>
       </div>
 

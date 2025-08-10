@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({
   onClick,
 }) => {
   const variantClasses = {
-    default: "bg-white border border-gray-200 shadow-sm",
+    default: "bg-white border border-gray-200 shadow-xs",
     outlined: "bg-white border-2 border-gray-300",
     elevated: "bg-white shadow-lg border border-gray-100",
     ghost: "bg-transparent",
@@ -37,7 +37,7 @@ const Card: React.FC<CardProps> = ({
 
   const roundedClasses = {
     none: "",
-    sm: "rounded-sm",
+    sm: "rounded-xs",
     md: "rounded-md",
     lg: "rounded-lg",
     xl: "rounded-xl",
@@ -102,7 +102,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
         {subtitle && <p className="text-sm text-gray-600 mt-1">{subtitle}</p>}
         {children}
       </div>
-      {action && <div className="flex-shrink-0 ml-4">{action}</div>}
+      {action && <div className="shrink-0 ml-4">{action}</div>}
     </div>
   );
 };
@@ -252,7 +252,7 @@ export const ContentCard: React.FC<ContentCardProps> = ({
               {meta.tags.slice(0, 3).map((tag, index) => (
                 <span
                   key={index}
-                  className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-700"
+                  className="inline-flex items-center px-2 py-1 rounded-sm text-xs font-medium bg-blue-100 text-blue-700"
                 >
                   #{tag}
                 </span>

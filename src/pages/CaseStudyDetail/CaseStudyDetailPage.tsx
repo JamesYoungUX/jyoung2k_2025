@@ -51,10 +51,10 @@ const CaseStudyDetailPage: React.FC = () => {
         <div className="max-w-7xl mx-auto text-center py-20">
           <div className="space-y-8">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-purple-400/20 blur-3xl rounded-full"></div>
+              <div className="absolute inset-0 bg-linear-to-r from-teal-400/20 to-purple-400/20 blur-3xl rounded-full"></div>
               <div className="relative animate-pulse space-y-6">
-                <div className="h-12 bg-gradient-to-r from-teal-400/30 to-purple-400/30 rounded-2xl w-2/3 mx-auto"></div>
-                <div className="h-8 bg-gradient-to-r from-teal-400/20 to-purple-400/20 rounded-xl w-1/2 mx-auto"></div>
+                <div className="h-12 bg-linear-to-r from-teal-400/30 to-purple-400/30 rounded-2xl w-2/3 mx-auto"></div>
+                <div className="h-8 bg-linear-to-r from-teal-400/20 to-purple-400/20 rounded-xl w-1/2 mx-auto"></div>
                 <div className="flex justify-center space-x-4 mt-12">
                   <div className="h-6 w-20 bg-teal-400/20 rounded-full"></div>
                   <div className="h-6 w-16 bg-purple-400/20 rounded-full"></div>
@@ -160,7 +160,7 @@ const CaseStudyDetailPage: React.FC = () => {
           )}
           {/* Title below hero image, styled like intro was */}
           {(displayCaseStudy as any).title && (
-            <div className="bg-muted dark:bg-muted-dark backdrop-blur-sm p-8 rounded-xl border border-border dark:border-crystal-700 mb-8">
+            <div className="bg-muted dark:bg-muted-dark backdrop-blur-xs p-8 rounded-xl border border-border dark:border-crystal-700 mb-8">
               <p className="text-2xl md:text-3xl font-bold text-orchid-600 dark:text-orchid-400 text-center mb-2">
                 {(displayCaseStudy as any).title}
               </p>
@@ -168,7 +168,7 @@ const CaseStudyDetailPage: React.FC = () => {
           )}
           
           {/* Project Details Block - 3-Column Layout, Team spans both rows */}
-          <div className="bg-muted dark:bg-muted-dark backdrop-blur-sm p-8 rounded-xl border border-border dark:border-crystal-700">
+          <div className="bg-muted dark:bg-muted-dark backdrop-blur-xs p-8 rounded-xl border border-border dark:border-crystal-700">
             <div className="grid grid-cols-3 gap-8 items-start">
               {/* Row 1: Role, Platform, Team (team spans 2 rows) */}
               <div>
@@ -226,7 +226,7 @@ const CaseStudyDetailPage: React.FC = () => {
 
         {/* Content Sections - Single Card with Dividers */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
-          <div className="bg-muted dark:bg-muted-dark backdrop-blur-sm p-8 rounded-2xl border border-border dark:border-crystal-700">
+          <div className="bg-muted dark:bg-muted-dark backdrop-blur-xs p-8 rounded-2xl border border-border dark:border-crystal-700">
             {/* Sections */}
             {(displayCaseStudy as Record<string, unknown>).sections && Array.isArray((displayCaseStudy as Record<string, unknown>).sections) && (
               <>

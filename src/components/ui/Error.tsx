@@ -31,12 +31,12 @@ const Error: React.FC<ErrorProps> = ({
     alert: 'bg-red-50 border border-red-200 text-red-700 rounded-lg',
     banner: 'bg-red-600 text-white',
     inline: 'text-red-600 bg-transparent',
-    card: 'bg-white border border-red-200 rounded-xl shadow-sm',
+    card: 'bg-white border border-red-200 rounded-xl shadow-xs',
   };
 
   const ErrorIcon = () => (
     <svg
-      className="h-5 w-5 text-red-500 flex-shrink-0"
+      className="h-5 w-5 text-red-500 shrink-0"
       viewBox="0 0 20 20"
       fill="currentColor"
       aria-hidden="true"
@@ -93,7 +93,7 @@ const Error: React.FC<ErrorProps> = ({
         {onDismiss && variant !== 'inline' && (
           <button
             onClick={onDismiss}
-            className={`ml-3 flex-shrink-0 p-1 rounded transition-colors duration-200 ${
+            className={`ml-3 shrink-0 p-1 rounded transition-colors duration-200 ${
               variant === 'banner'
                 ? 'hover:bg-red-700 text-red-200 hover:text-white'
                 : 'hover:bg-red-100 text-red-400 hover:text-red-600'

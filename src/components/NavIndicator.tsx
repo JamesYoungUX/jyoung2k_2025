@@ -90,7 +90,7 @@ const NavIndicator: React.FC<NavIndicatorProps> = ({ location }) => {
   return (
     <div
       ref={indicatorRef}
-      className="absolute bottom-0 h-1 bg-black rounded transition-all duration-300 ease-in-out"
+      className="absolute bottom-0 h-1 bg-black rounded-sm transition-all duration-300 ease-in-out"
       style={{
         left: style.left,
         width: style.width,

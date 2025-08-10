@@ -16,10 +16,10 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ caseStudy }) => {
 
   return (
     <div 
-      className="bg-white/10 rounded-2xl shadow-lg overflow-hidden flex flex-col-reverse md:flex-row items-stretch mb-8 w-full border border-white/20 animate-fadeIn" 
+      className="bg-white/10 rounded-2xl shadow-lg overflow-hidden flex flex-col-reverse md:flex-row items-stretch mb-8 w-full border border-white/20 animate-fade-in" 
       style={{ minHeight: '600px', height: '600px' }}
     >
-                   <div className="flex flex-col justify-end flex-grow p-6 md:p-8 gap-3 min-w-[260px] md:basis-2/5 md:w-2/5">
+                   <div className="flex flex-col justify-end grow p-6 md:p-8 gap-3 min-w-[260px] md:basis-2/5 md:w-2/5">
         <h2 className="text-3xl font-semibold text-lime-300 mb-2 text-left leading-tight">
           {title}
         </h2>

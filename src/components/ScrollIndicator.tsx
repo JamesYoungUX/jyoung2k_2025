@@ -2,7 +2,7 @@ import React from 'react';
 
 const ScrollIndicator: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-4 animate-fadeIn">
+    <div className="flex flex-col items-center justify-center py-4 animate-fade-in">
       <div className="flex flex-col items-center relative">
         {/* Glow effect */}
         <div className="absolute inset-0 bg-lime-300/40 blur-xl rounded-full scale-150"></div>

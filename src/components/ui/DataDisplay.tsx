@@ -236,7 +236,7 @@ export const ArrayDisplay = <T,>({
         }
       >
         {displayItems.map((item, index) => (
-          <div key={index} className={horizontal ? "flex-shrink-0" : ""}>
+          <div key={index} className={horizontal ? "shrink-0" : ""}>
             {renderItem(item, index)}
           </div>
         ))}

@@ -21,7 +21,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ navLinks }) => {
       {/* Hamburger Button */}
       <button
         onClick={toggleMenu}
-        className="flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none"
+        className="flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-hidden"
         aria-label="Toggle menu"
       >
         <span
